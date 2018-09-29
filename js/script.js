@@ -4,6 +4,7 @@ $(function(){
     var carouselList = $('#carousel ul');
     var dotsContainer = $('.dotsContainer');
     var currentInterval;
+    
     function moveFirstSlide() {
         
         var firstItem = carouselList.find('li:first');
@@ -14,6 +15,7 @@ $(function(){
     };
 
     function changeSlideRight() {
+        
         carouselList.animate({'marginLeft':-600}, 500, moveFirstSlide);
         var activeDot = $('.dotsContainer').find('.active');
         activeDot.removeClass('active');
@@ -21,11 +23,11 @@ $(function(){
         if (activeDot.next().length)  // zwraca ilość obiektów w tablicy nie indeks
         {
             activeDot.next().addClass('active');
-        }
-        else
-        {
-            $('.dotsContainer .dot:first').addClass("active");
-        }
+        } else
+            {
+                $('.dotsContainer .dot:first').addClass("active");
+            }
+
     };
 
     function moveLastSlide() {
@@ -38,6 +40,7 @@ $(function(){
     };
 
     function changeSlideLeft() {
+        
         carouselList.animate({'marginLeft': +600}, 500, moveLastSlide);
         var activeDot = $('.dotsContainer').find('.active');
         activeDot.removeClass('active');
@@ -45,36 +48,38 @@ $(function(){
         if (activeDot.prev().length)
         {
             activeDot.prev().addClass('active');
-        }
-        else
-        {
-            $('.dotsContainer .dot:last').addClass("active");
-        }
+        } else
+            {
+                $('.dotsContainer .dot:last').addClass("active");
+            }
+
     };
 
-    function move(direction) {
-        if (currentInterval)
-        {
-            clearInterval(currentInterval);
-        }
-        if(direction == "left"){
-            currentInterval = setInterval(changeSlideRight, 2000);
-        } else 
-            currentInterval = setInterval(changeSlideLeft, 3000);
-    }
+    // function move(direction) {
+    //     if (currentInterval)
+    //     {
+    //         clearInterval(currentInterval);
+    //     }
+    //     if(direction == "left"){
+    //         currentInterval = setInterval(changeSlideRight, 2000);
+    //     } else 
+    //         currentInterval = setInterval(changeSlideLeft, 3000);
+    // }
 
     $('.carouselContainer a').click(function(e) {
         e.preventDefault();
         console.log($(this).attr("class"));
         if( $(this).attr("class") == "next"){
-            move("left");
+            // move("left");
+            changeSlideRight();
           } else {
-            move("right");
+            // move("right");
+            changeSlideLeft();
           }
     });
 
-    $('img').click(function(e) {
-        clearInterval(currentInterval);
-    });
+    // $('img').click(function(e) {
+    //     clearInterval(currentInterval);
+    // });
 
 });
