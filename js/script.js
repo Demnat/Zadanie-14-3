@@ -20,11 +20,9 @@ $(function(){
         var activeDot = $('.dotsContainer').find('.active');
         activeDot.removeClass('active');
         console.log("changeSlideRight");
-        if (activeDot.next().length)  // zwraca ilość obiektów w tablicy nie indeks
-        {
+        if (activeDot.next().length) { // zwraca ilość obiektów w tablicy nie indeks
             activeDot.next().addClass('active');
-        } else
-            {
+        } else {
                 $('.dotsContainer .dot:first').addClass("active");
             }
 
@@ -35,51 +33,52 @@ $(function(){
         var firstItem = carouselList.find('li:first');
         var lastItem = carouselList.find('li:last');
         firstItem.before(lastItem);
-        carouselList.css({marginLeft:0});
+        carouselList.css({marginLeft: -600}); // ustawienie contenera na 2 pozycję
 
     };
 
     function changeSlideLeft() {
         
-        carouselList.animate({'marginLeft': +600}, 500, moveLastSlide);
+        carouselList.animate({'marginLeft': 0}, 500, moveLastSlide);
         var activeDot = $('.dotsContainer').find('.active');
         activeDot.removeClass('active');
         console.log("changeSlideLeft");
-        if (activeDot.prev().length)
-        {
+        if (activeDot.prev().length) {
             activeDot.prev().addClass('active');
-        } else
-            {
+        } else {
                 $('.dotsContainer .dot:last').addClass("active");
             }
 
     };
 
-    // function move(direction) {
-    //     if (currentInterval)
-    //     {
-    //         clearInterval(currentInterval);
-    //     }
-    //     if(direction == "left"){
-    //         currentInterval = setInterval(changeSlideRight, 2000);
-    //     } else 
-    //         currentInterval = setInterval(changeSlideLeft, 3000);
-    // }
+    //przesunięcie o jeden w lewo
+    changeSlideLeft();
+
+    function move(direction) {
+        if (currentInterval)
+        {
+            clearInterval(currentInterval);
+        }
+        if(direction == "left"){
+            currentInterval = setInterval(changeSlideRight, 2000);
+        } else 
+            currentInterval = setInterval(changeSlideLeft, 3000);
+    }
 
     $('.carouselContainer a').click(function(e) {
         e.preventDefault();
         console.log($(this).attr("class"));
         if( $(this).attr("class") == "next"){
-            // move("left");
+            move("left");
             changeSlideRight();
           } else {
-            // move("right");
+            move("right");
             changeSlideLeft();
           }
     });
 
-    // $('img').click(function(e) {
-    //     clearInterval(currentInterval);
-    // });
+    $('img').click(function(e) {
+        clearInterval(currentInterval);
+    });
 
 });

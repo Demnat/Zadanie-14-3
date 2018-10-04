@@ -1,0 +1,88 @@
+.index {
+  /* Next & previous buttons */
+  /* Position the "next button" to the right */
+  /* Position the "next button" to the right */
+  /* On hover, add a black background color with a little bit see-through */
+}
+
+.index .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.index .carouselContainer {
+  margin: 0 auto;
+  width: 600px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.index .carouselContainer ul {
+  padding: 0;
+  width: 3000px;
+}
+
+.index .carouselContainer ul li {
+  list-style: none;
+  float: left;
+}
+
+.index .carouselContainer ul li img {
+  width: 600px;
+}
+
+.index .prev, .index .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.index .prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.index .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.index .prev:hover, .index .next:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.index .dotsContainer {
+  margin: 10px;
+  text-align: center;
+}
+
+.index .dotsContainer .dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.index .dotsContainer .dot:hover {
+  background-color: #717171;
+}
+
+.index .dotsContainer .active {
+  background-color: #717171;
+}
+
+/*# sourceMappingURL=style.css.map */
